@@ -1,0 +1,222 @@
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial;
+}
+
+body{
+background:#f2f2f2;
+}
+
+/* HEADER */
+header{
+background:#1f8f3a;
+padding:15px;
+text-align:center;
+}
+
+.logo{
+height:40px;
+}
+
+/* CONTAINER */
+.container{
+padding:16px;
+max-width:500px;
+margin:auto;
+}
+
+/* PESQUISA */
+.pesquisa{
+width:100%;
+padding:14px;
+border-radius:10px;
+border:1px solid #ccc;
+margin-bottom:10px;
+font-size:15px;
+}
+
+/* INPUTS */
+input{
+width:100%;
+padding:12px;
+border-radius:8px;
+border:1px solid #1f8f3a;
+margin-top:15px;
+font-size:15px;
+outline:none;
+}
+
+/* CARD PRODUÇÃO */
+.card-producao{
+background:white;
+border:2px solid #1f8f3a;
+border-radius:19px;
+padding:18px;
+margin-top:15px;
+}
+
+.titulo-producao{
+text-align:center;
+color:#1f8f3a;
+font-size:24px;
+}
+
+/* BOTÕES */
+button{
+width:100%;
+padding:12px;
+border:none;
+border-radius:8px;
+background:#1f8f3a;
+color:white;
+font-size:16px;
+margin-top:15px;
+}
+
+.btn-excluir{
+background:#c0392b;
+}
+
+.btnSair{
+display:block;
+margin:30px auto;
+background:#e53935;
+}
+
+.btnVoltar{
+position:relative;
+top:10px;
+left:10px;
+width:auto;
+padding:6px 10px;
+font-size:15px;
+background:#1f8f3a;
+border-radius:6px;
+}
+
+/* CARDS */
+.card{
+background:white;
+border-radius:10px;
+padding:14px;
+margin-top:10px;
+box-shadow:0 2px 6px rgba(0,0,0,0.1);
+}
+
+.acoes{
+display:flex;
+gap:10px;
+margin-top:10px;
+}
+
+/* MODAL */
+.modal{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.4);
+display:none;
+align-items:center;
+justify-content:center;
+}
+
+.modal-box{
+background:white;
+padding:20px;
+border-radius:12px;
+width:90%;
+max-width:350px;
+}
+
+.modal-botoes{
+display:flex;
+gap:10px;
+margin-top:15px;
+}
+
+.modal-botoes button{
+flex:1;
+}
+
+.btn-cancel{
+background:#777;
+}
+
+/* TITULO */
+h1{
+font-size:22px;
+text-align:center;
+margin:15px 0;
+}
+
+/* TOAST */
+#toast{
+position:fixed;
+top:20px;
+left:50%;
+transform:translateX(-50%);
+background:#c8f7c5;
+color:#1b5e20;
+padding:12px 20px;
+border-radius:8px;
+font-weight:bold;
+opacity:0;
+transition:0.3s;
+z-index:9999;
+}
+
+#toast.mostrar{
+opacity:1;
+}
+
+#toast.erro{
+background:#ffb3b3;
+color:#8b0000;
+}
+
+/* 🔍 RESULTADO DA PESQUISA */
+#resultadoPesquisa{
+background:white;
+border-radius:10px;
+margin-bottom:15px;
+overflow:hidden;
+box-shadow:0 2px 6px rgba(0,0,0,0.1);
+max-height:200px;
+overflow-y:auto;
+}
+
+.item-pesquisa{
+padding:10px;
+border-bottom:1px solid #eee;
+font-size:14px;
+}
+
+.item-pesquisa:last-child{
+border-bottom:none;
+}
+
+/* ⚡ SUGESTÕES */
+#sugestoes{
+background:white;
+border-radius:10px;
+margin-top:5px;
+overflow:hidden;
+box-shadow:0 2px 6px rgba(0,0,0,0.1);
+max-height:180px;
+overflow-y:auto;
+}
+
+.item-sugestao{
+padding:10px;
+border-bottom:1px solid #eee;
+cursor:pointer;
+font-size:14px;
+}
+
+.item-sugestao:hover{
+background:#f0f0f0;
+}

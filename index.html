@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Controle de Produtos</title>
+<link rel="stylesheet" href="style.css">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#1f8f3a">
+</head>
+
+<body>
+
+<header>
+    <img src="Logo.png" class="logo">
+</header>
+
+<div class="container">
+
+<input
+id="pesquisa"
+class="pesquisa"
+placeholder="Pesquisar nome ou código..."
+oninput="pesquisarProdutos()"
+/>
+
+<div id="resultadoPesquisa"></div>
+
+<div class="card-producao">
+
+<h3>Produtos em Produção</h3>
+
+<input
+id="codigo"
+placeholder="Código"
+oninput="buscarSugestoes()"
+/>
+
+<div id="sugestoes"></div>
+
+<input
+id="nome"
+placeholder="Nome do produto"
+oninput="buscarSugestoes()"
+/>
+
+<input
+id="validade"
+placeholder="DD/MM/AAAA"
+oninput="formatarData(this)"
+/>
+
+<button onclick="salvarProduto()">Adicionar Produto</button>
+
+<a href="vencimentos.html">
+<button>Ver produtos</button>
+</a>
+
+</div>
+
+</div>
+
+<div id="toast"></div>
+
+<script type="module" src="app.js"></script>
+<script>
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.register("service-worker.js")
+    .then(() => console.log("PWA ativo"))
+    .catch(err => console.log("Erro SW:", err))
+}
+</script>
+</body>
+</html>

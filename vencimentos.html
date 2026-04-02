@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Produtos em Produção</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<header>
+
+<img src="Logo.png" class="logo">
+
+</header>
+<button class="btnVoltar" onclick="voltar()">⏎ Voltar</button>
+
+<div class="container">
+    <h1>Produtos Próximo do Vencimento</h1>
+
+<div id="listaVencimentos"></div>
+
+</div>
+
+
+<div id="modalEditar" class="modal">
+
+<div id="modalEditarBox" class="modal-box">
+
+<h3>Editar validade</h3>
+
+<input
+id="editarData"
+placeholder="DD/MM/AAAA"
+inputmode="numeric"
+maxlength="10"
+oninput="formatarData(this)"
+>
+
+<div class="modal-botoes">
+
+<button onclick="salvarEdicao()">Salvar</button>
+
+<button class="btn-cancel" onclick="fecharModal()">Cancelar</button>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div id="modalExcluir" class="modal">
+
+<div class="modal-box">
+
+<h3>Tem certeza que deseja excluir?</h3>
+
+<div class="modal-botoes">
+
+<button onclick="confirmarExcluir()">Sim, excluir</button>
+
+<button class="btn-cancel" onclick="fecharModal()">Cancelar</button>
+
+</div>
+
+</div>
+
+</div>
+
+<script type="module" src="app.js"></script>
+</body>
+</html>
