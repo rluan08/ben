@@ -1,4 +1,4 @@
-const CACHE_NAME = "produtos-v22"
+const CACHE_NAME = "produtos-offline-v1"
 
 const ASSETS = [
   "./",
@@ -7,36 +7,42 @@ const ASSETS = [
   "./style.css",
   "./app.js",
   "./produtosBase.js",
-  "./Icone.jpeg"
+  "./Icone.jpeg",
+  "./Logo.png"
 ]
 
-// INSTALAR
+// INSTALA
 self.addEventListener("install", event => {
-  self.skipWaiting() // 🔥 força atualizar
+  self.skipWaiting()
   event.waitUntil(
-    caches.open(CACHE_NAME).then(cache => cache.addAll(ASSETS))
-  )
-})
-
-// ATIVAR
-self.addEventListener("activate", event => {
-  event.waitUntil(
-    caches.keys().then(keys => {
-      return Promise.all(
-        keys.map(key => {
-          if(key !== CACHE_NAME){
-            return caches.delete(key)
-          }
-        })
-      )
+    caches.open(CACHE_NAME).then(cache => {
+      return cache.addAll(ASSETS)
     })
   )
-  self.clients.claim() // 🔥 ativa na hora
 })
 
-// FETCH
+// ATIVA
+self.addEventListener("activate", event => {
+  self.clients.claim()
+})
+
+// OFFLINE FUNCIONANDO
 self.addEventListener("fetch", event => {
+
   event.respondWith(
-    fetch(event.request).catch(() => caches.match(event.request))
+    caches.match(event.request).then(response => {
+
+      // se tiver no cache → usa
+      if(response){
+        return response
+      }
+
+      // senão tenta internet
+      return fetch(event.request).catch(() => {
+        return caches.match("./index.html")
+      })
+
+    })
   )
+
 })
