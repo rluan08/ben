@@ -220,3 +220,20 @@ font-size:14px;
 .item-sugestao:hover{
 background:#f0f0f0;
 }
+.item-pesquisa{
+  padding:12px;
+  border-bottom:1px solid #eee;
+  background:white;
+}
+
+.item-pesquisa strong{
+  display:block;
+  font-size:15px;
+  color:#333;
+}
+
+.item-pesquisa .codigo{
+  font-size:13px;
+  color:#777;
+  margin-top:3px;
+}
