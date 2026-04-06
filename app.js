@@ -37,10 +37,34 @@ function mostrarMensagem(msg,tipo="ok"){
 // VALIDAR DATA
 function validarDataCompleta(data){
 
-  let [d,m,a]=data.split("/")
-  let dataProd=new Date(a,m-1,d)
+  if(!data || data.length !== 10){
+    mostrarMensagem("Data incompleta","erro")
+    return false
+  }
 
-  let hoje=new Date()
+  let [d,m,a] = data.split("/")
+
+  d = parseInt(d)
+  m = parseInt(m)
+  a = parseInt(a)
+
+  // valida mês
+  if(m < 1 || m > 12){
+    mostrarMensagem("Mês inválido","erro")
+    return false
+  }
+
+  // dias por mês
+  let diasMes = new Date(a, m, 0).getDate()
+
+  if(d < 1 || d > diasMes){
+    mostrarMensagem("Dia inválido","erro")
+    return false
+  }
+
+  let dataProd = new Date(a, m-1, d)
+
+  let hoje = new Date()
   hoje.setHours(0,0,0,0)
 
   if(dataProd.getTime() === hoje.getTime()){
