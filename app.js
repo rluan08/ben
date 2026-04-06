@@ -11,16 +11,18 @@ function salvarLocal(){
 
 // FORMATAR DATA
 function formatarData(input){
-  let v=input.value.replace(/\D/g,"")
-  if(v.length>8) v=v.slice(0,8)
 
-  if(v.length>4){
-    v=v.replace(/(\d{2})(\d{2})(\d+)/,"$1/$2/$3")
-  } else if(v.length>2){
-    v=v.replace(/(\d{2})(\d+)/,"$1/$2")
+  let v = input.value.replace(/\D/g,"") // remove tudo que não é número
+
+  if(v.length > 8) v = v.slice(0,8)
+
+  if(v.length >= 5){
+    v = v.replace(/(\d{2})(\d{2})(\d+)/,"$1/$2/$3")
+  } else if(v.length >= 3){
+    v = v.replace(/(\d{2})(\d+)/,"$1/$2")
   }
 
-  input.value=v
+  input.value = v
 }
 
 // TOAST
