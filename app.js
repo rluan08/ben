@@ -129,7 +129,10 @@ function pesquisarProdutos(){
 
       let el=document.createElement("div")
       el.className="item-pesquisa"
-      el.innerHTML=`${codigo} - ${produtosBase[codigo]}`
+      el.innerHTML=`
+  <strong>${produtosBase[codigo]}</strong>
+  <div class="codigo">Código: ${codigo}</div>
+`
       div.appendChild(el)
 
       count++
