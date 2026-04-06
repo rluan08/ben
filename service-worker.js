@@ -1,4 +1,4 @@
-const CACHE_NAME = "produtos-v1"
+const CACHE_NAME = "produtos-v2"
 
 // 🔥 arquivos que o app precisa offline
 const ASSETS = [
