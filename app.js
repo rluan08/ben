@@ -12,7 +12,7 @@ function salvarLocal(){
 // FORMATAR DATA
 function formatarData(input){
 
-  let v = input.value.replace(/\D/g,"") // remove tudo que não é número
+  let v = input.value.replace(/\D/g,"")
 
   if(v.length > 8) v = v.slice(0,8)
 
