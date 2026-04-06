@@ -1,6 +1,5 @@
-const CACHE_NAME = "produtos-v99"
+const CACHE_NAME = "produtos-v1"
 
-// 🔥 arquivos que o app precisa offline
 const ASSETS = [
   "./",
   "./index.html",
@@ -11,17 +10,15 @@ const ASSETS = [
   "./Icone.jpeg"
 ]
 
-// 📦 INSTALAÇÃO (salva no cache)
+// INSTALAR
 self.addEventListener("install", event => {
+  self.skipWaiting() // 🔥 força atualizar
   event.waitUntil(
-    caches.open(CACHE_NAME)
-      .then(cache => {
-        return cache.addAll(ASSETS)
-      })
+    caches.open(CACHE_NAME).then(cache => cache.addAll(ASSETS))
   )
 })
 
-// ♻️ ATIVAÇÃO (limpa cache antigo)
+// ATIVAR
 self.addEventListener("activate", event => {
   event.waitUntil(
     caches.keys().then(keys => {
@@ -34,29 +31,12 @@ self.addEventListener("activate", event => {
       )
     })
   )
+  self.clients.claim() // 🔥 ativa na hora
 })
 
-// 🌐 FETCH (offline first)
+// FETCH
 self.addEventListener("fetch", event => {
   event.respondWith(
-    caches.match(event.request)
-      .then(response => {
-        // se tiver no cache → usa
-        if(response){
-          return response
-        }
-
-        // senão → busca da internet
-        return fetch(event.request)
-          .then(res => {
-            return res
-          })
-          .catch(() => {
-            // fallback simples (opcional)
-            if(event.request.mode === "navigate"){
-              return caches.match("./index.html")
-            }
-          })
-      })
+    fetch(event.request).catch(() => caches.match(event.request))
   )
 })
