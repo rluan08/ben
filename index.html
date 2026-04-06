@@ -73,7 +73,22 @@ oninput="formatarData(this)"
 
 <script>
 if ("serviceWorker" in navigator) {
-  navigator.serviceWorker.register("service-worker.js")
+  navigator.serviceWorker.register("service-worker.js").then(reg => {
+
+    reg.onupdatefound = () => {
+      let newWorker = reg.installing
+
+      newWorker.onstatechange = () => {
+        if (newWorker.state === "installed") {
+          if (navigator.serviceWorker.controller) {
+            // 🔥 atualizou → recarrega
+            location.reload()
+          }
+        }
+      }
+    }
+
+  })
 }
 </script>
 
